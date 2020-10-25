@@ -6,12 +6,7 @@
 		return res.status(400).json('incorrect submission form');
 	}
 
-	//bcrypt.hash(password, null, null, function(err, hash) {
-    // Store hash in your password DB.
-    //console.log(hash);
-	//});
 	const hash = bcrypt.hashSync(password); 
-
 
 	db.transaction(trx => {
 		trx.insert({

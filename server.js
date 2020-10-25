@@ -17,47 +17,10 @@ const db = knex({
   }
 });
 
-/*db.select('*').from('users').then(data=> { 
-	console.log(data)
-});*/
-
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors())
-
-
-
-
-// const database = {
-// 	users:[
-// 	{
-// 		id:'123', 
-// 		name:'John', 
-// 		email:'j@gmail.com', 
-// 		password: 'password',
-// 		entires:0,
-// 		joined: new Date()
-// 	},
-// 	{
-// 		id:'124', 
-// 		name:'Sal', 
-// 		email:'sal@gmail.com', 
-// 		password: '12345',
-// 		entires:0,
-// 		joined: new Date()
-// 	}
-
-// 	], 
-// }
-
-// app.get('/', (req,res) =>{
-
-// 	res.send(database.users);
-
-// })
-
-
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`app is running on ${process.env.PORT}`);
@@ -65,15 +28,9 @@ app.listen(process.env.PORT || 3000, () => {
 })
 
 /*
-/--> res = this is working
-
 /--> signin--> POST() = success/fail //want ot send password in body over https 
-
 / register --> POST = userObject 
-
 /profile accessing :/userId --> GET = user
-
-
 /image --> PUT (updating score for existing user profile) --> user 
 
 */
@@ -86,22 +43,3 @@ app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db) }
 app.put('/image', (req, res) => { image.handleImage(req, res, db) })
 
 app.post('/imageUrl', (req, res) => { image.handleApiCall(req, res) })
-
-
-
-
-
-
-//Asynchronous
-
-// bcrypt.hash("bacon", null, null, function(err, hash) {
-//     // Store hash in your password DB.
-// });
-
-// // Load hash from your password DB.
-// bcrypt.compare("bacon", hash, function(err, res) {
-//     // res == true
-// });
-// bcrypt.compare("veggies", hash, function(err, res) {
-//     // res = false
-// });
